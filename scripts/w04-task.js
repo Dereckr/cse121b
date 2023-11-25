@@ -4,7 +4,7 @@
 let myProfile = {
 
     name : "Dereck Romero Moscoso",
-    photo: "../w02-task/images/photo.jpeg",
+    photo: "../images/photo.jpeg",
     favoriteFoods:["Mondongo", "Fricase", "Sushi", "Valdiviano", "Tonkatsu", "Frijol Tropeiro", "Acai", "Lasagna", "Tempura"],
     hobbies:["play wally", "play soccer", "board games", "sudoku", "watch movies"],
     placesLived:[]
