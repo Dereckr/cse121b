@@ -4,7 +4,7 @@
 const templesElement = document.querySelector("#temples");
 let templeList = [];
 /* async displayTemples Function */
-const displayTemples =  temples.forEach(temples => {
+function displayTemples(temples) {
     let article = document.createElement("article");
     let h3 = document.createElement("h3");
     h3.textContent=temples.templeName;
@@ -14,17 +14,17 @@ const displayTemples =  temples.forEach(temples => {
     article.appendChild(h3);
     article.appendChild(img);
     templesElement.appendChild(article);
-});
+};
 
 /* async getTemples Function using fetch()*/
-const getTemples = async()=>{
-    const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json")
+let getTemples = async()=>{
+    const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
     if (response.ok){
         templeList = await response.json();
-        templeList=displayTemples;
+        templeList.forEach(displayTemples);
     }
     }
-    
+
  
 /* reset Function */
 function reset(){
@@ -37,22 +37,22 @@ function sortBy(temples){
     let filter = document.querySelector("#sortBy").value;
     switch(filter){
         case "utah":
-            displayTemples.filter(temples=> temples.location.includes("Utah"));
+            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
             break;
         case "nonutah":
-            displayTemples.filter(temples=> !temples.locations.includes("Utah"));
+            displayTemples(temples.filter(temple => !temple.location.includes("Utah")));
             break;
         case "older":
-            displayTemples.filter(temples =temples.dedicated <newdate(1950,0,1));
+            displayTemples(temples.filter(temple => new Date(temple.dedicated) < new Date(1950, 0, 1)));
             break;
         case "all":
+            default:
             displayTemples(temples);
-            break;
     } 
 
 }
 
 getTemples();
-console.log(templeList);
+
 /* Event Listener */
-document.querySelector("#sortby").addEventListener("change", ()=>{sortBy(templeList)});
+document.querySelector("#sortBy").addEventListener("change", ()=>{sortBy(templeList)});
