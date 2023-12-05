@@ -5,30 +5,32 @@ const templesElement = document.querySelector("#temples");
 let templeList = [];
 /* async displayTemples Function */
 function displayTemples(temples) {
+    temples.forEach((temple) =>
+    {
     let article = document.createElement("article");
     let h3 = document.createElement("h3");
-    h3.textContent=temples.templeName;
+    h3.textContent=temple.templeName;
     let img = document.createElement("img");
-    img.setAttribute("src",temples.imageUrl);
-    img.setAttribute("alt",temples.location);
+    img.setAttribute("src",temple.imageUrl);
+    img.setAttribute("alt",temple.location);
     article.appendChild(h3);
     article.appendChild(img);
     templesElement.appendChild(article);
-};
+})};
 
 /* async getTemples Function using fetch()*/
 let getTemples = async()=>{
     const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
     if (response.ok){
         templeList = await response.json();
-        templeList.forEach(displayTemples);
+        displayTemples(templeList);
     }
     }
 
  
 /* reset Function */
 function reset(){
-    article.clear();
+    templesElement.innerHTML="";
 }
 
 /* sortBy Function */
@@ -39,7 +41,7 @@ function sortBy(temples){
         case "utah":
             displayTemples(temples.filter(temple => temple.location.includes("Utah")));
             break;
-        case "nonutah":
+        case "notutah":
             displayTemples(temples.filter(temple => !temple.location.includes("Utah")));
             break;
         case "older":
