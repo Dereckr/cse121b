@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto:wght@700&family=Staatliches&display=swap');
+
+
+body {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 120%;
+    background-color: lightgray;
+}
+
+article {
+    margin-bottom: 30px;
+    border: 2px solid black;
+    padding: 0px 20px;
+    width: 50%;
+}
+
+h3 {
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Staatliches, sans-serif;;
+}
+
+#resume_photo {
+    width:400px
+}
+
+img{
+    border-radius: 10%;
+    margin-left: 70px;
+}
+
+#info{
+    text-align: center;
+    width: 50%;
+}
